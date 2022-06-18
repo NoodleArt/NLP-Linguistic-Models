@@ -113,4 +113,116 @@ def bigramPerplexity():
 			l = len(listOfWords)
 			prob=[]
 			if l!=0:
-				wo
+				word=listOfWords[0]
+				prob.append(matrix[V][wordDict[word][0]]/float(totalLines))
+			for i in range(l-1):
+				word=listOfWords[i]
+				next_word = listOfWords[i+1]
+				prob.append(matrix[wordDict[word][0]][wordDict[next_word][0]]/float(wordDict[word][1]))
+			# Find perplexity
+			print prob
+			per=1
+			for p in prob:
+        			per = per*p
+        		per=1/float(per)
+        		perplexities.append(pow(per, 1/float(l)))
+	print perplexities
+	PP=0
+	for i in perplexities:
+		PP=PP+i
+	PP=PP/float(len(perplexities))
+	return PP
+	
+def trigramDict():
+	global filename, totalLines, tokens, index
+	index=0
+	with open(filename) as file:
+		for line in file:
+			listOfWords = wordpunct_tokenize(line)
+			l = len(listOfWords)
+			if l!=0:
+				word=listOfWords[0]
+				if word in secondDict:
+					secondDict[str(word)]+=1
+				else:
+					secondDict[str(word)]=1
+				if l>1:
+					word1=listOfWords[1]
+					s=str([word,word1])
+					if s in secondDict:
+						 secondDict[s]+=1
+					else:
+						secondDict[s]=1
+			for i in range(l-2):
+				s = str([listOfWords[i],listOfWords[i+1]])
+				if s in trigram_dict:
+					trigram_dict[s][1]+=1
+				else:
+					trigram_dict[s]=[index, 1]
+					index+=1
+	print "\n"
+	print trigram_dict
+	print "\n"
+	print secondDict
+	print "\n"
+
+def createTrigram():
+	global filename, totalLines, tokens, index
+	with open(filename) as file:
+		for line in file:
+			listOfWords = wordpunct_tokenize(line)
+			l = len(listOfWords)
+			for i in range(l-2):
+				word1 = listOfWords[i]
+				word2 = listOfWords[i+1]
+				word3 = listOfWords[i+2]
+				s = str([word1,word2])
+				matrix[trigram_dict[s][0]][wordDict[word3][0]]+=1
+	print matrix
+
+def trigramPerplexity():
+	global filename, totalLines, tokens, index
+	with open(filename) as file:
+		perplexities=[]
+		for line in file:
+			listOfWords = wordpunct_tokenize(line)
+			l = len(listOfWords)
+			prob=[]
+			if l!=0:
+				word=listOfWords[0]
+				prob.append(secondDict[str(word)]/float(totalLines))		
+				if l>1:
+					word1=listOfWords[1]
+					prob.append(secondDict[str([word,word1])]/float(totalLines))
+			for i in range(l-2):
+				s = str([listOfWords[i],listOfWords[i+1]])
+				word = listOfWords[i+2]
+				num = matrix[trigram_dict[s][0]][wordDict[word][0]]
+				den = trigram_dict[s][1]
+				prob.append(float(num)/float(den))
+			per=1
+			print prob
+			for p in prob:
+        			per = per*p
+        		per=1/float(per)
+        		perplexities.append(pow(per, 1/float(l)))
+	PP=0
+	print perplexities
+	for i in perplexities:
+		PP=PP+i
+	PP=PP/float(len(perplexities))
+	return PP
+				
+#########################################################################################
+
+# Main
+filename=sys.argv[1]
+putInDict(filename)
+V=get_count()
+# Unigram
+unigramPP = unigramPerplexity()
+print "Unigram Perplexity = "+str(unigramPP)
+# Bigram
+createMatrix(V+1,V)
+createBigram()
+bigramPP = bigramPerplexity()
