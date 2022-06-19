@@ -1,0 +1,210 @@
+
+[
+    {
+        "id": 0, 
+        "lang_tagged_text": "Eid\\HI ka\\HI zaakat\\HI fitra\\HI lene\\HI kab\\HI aa\\HI rha\\HI hai\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "Eid ka zaakat fitra lene kab aa rha hai"
+    }, 
+    {
+        "id": 5, 
+        "lang_tagged_text": "@\\UN drkumarvishwas\\EN @\\UN hemraj302015\\EN @\\UN aaptivists\\EN @\\UN drrakeshparikh\\HI @\\UN ikumar7\\EN @_\\UN mahimagupta\\HI aapka\\HI kya\\HI vichaar\\HI hai\\HI pk\\UN movie\\EN ke\\HI baare\\HI main\\HI ?\\UN ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "@drkumarvishwas @hemraj302015 @aaptivists @drrakeshparikh @ikumar7 @_mahimagupta aapka kya vichaar hai pk movie ke baare main?"
+    }, 
+    {
+        "id": 8, 
+        "lang_tagged_text": "pls\\EN mane\\HI call\\EN karo\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "pls mane call karo"
+    }, 
+    {
+        "id": 9, 
+        "lang_tagged_text": "tum\\HI dono\\HI ko\\HI hi\\HI sabse\\HI jyada\\HI thand\\HI lgti\\HI hai\\HI .\\UN .\\UN .\\UN shweta\\HI gaur\\HI meenakshi\\HI saxena\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "tum dono ko hi sabse jyada thand lgti hai  .  .  .  shweta gaur meenakshi saxena"
+    }, 
+    {
+        "id": 11, 
+        "lang_tagged_text": "Tu\\HI jaldi\\HI se\\HI decideg\\EN karle\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "Tu jaldi se decideg karle "
+    }, 
+    {
+        "id": 15, 
+        "lang_tagged_text": "Bhai\\HI kha\\HI gayab\\HI hooo\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "Bhai kha gayab hooo"
+    }, 
+    {
+        "id": 21, 
+        "lang_tagged_text": "@\\UN gurmeetramrahim\\UN #\\UN blockbustermsg\\EN tumre\\EN jaisa\\HI na\\HI dayalu\\HI koi\\HI data\\HI ji\\HI humre\\HI jaisa\\HI papi\\HI koi\\HI na\\HI \"\\UN ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "@gurmeetramrahim #blockbustermsg tumre jaisa na dayalu koi data ji humre jaisa papi koi na\""
+    }, 
+    {
+        "id": 23, 
+        "lang_tagged_text": "aur\\HI air\\EN hostesses\\EN aa\\HI sakengi\\HI train\\EN me\\EN ??\\UN #\\UN railbudget2015\\EN ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "aur air hostesses aa sakengi train me?? #railbudget2015"
+    }, 
+    {
+        "id": 25, 
+        "lang_tagged_text": "#\\UN railbudget2015\\EN :\\UN @\\UN sureshpprabhu\\UN :\\UN revamping\\EN stations\\EN in\\EN terms\\EN of\\EN cleanliness\\EN ,\\UN wider\\EN tracks\\EN etc\\EN .\\UN @\\UN pragnik\\EN ", 
+        "matrix_language": "EN", 
+        "sentiment": 0, 
+        "text": "#railbudget2015: @sureshpprabhu: revamping stations in terms of cleanliness, wider tracks etc. @pragnik"
+    }, 
+    {
+        "id": 26, 
+        "lang_tagged_text": "Are\\HI mujhe\\HI pta\\HI h\\HI bhulna\\HI bhut\\HI mushkil\\HI hota\\HI h\\HI kuki\\EN y\\HI sab\\HI mne\\HI bh\\HI jhela\\HI h\\HI do\\HI tarike\\HI h\\HI ek\\HI asan\\EN or\\EN ek\\HI mushkl\\HI 1-\\UN phela\\HI bhar\\HI nikal\\HI cos\\EN m\\EN ya\\HI phir\\HI koi\\HI ghar\\HI k\\HI pas\\HI m\\HI ek\\HI mast\\HI s\\HI ladka\\HI dekh\\HI 15-20\\UN din\\HI dekh\\HI apne\\HI aap\\HI bhul\\HI jayegi\\HI or\\HI ho\\HI sakta\\HI h\\HI y\\EN wala\\HI use\\HI kafi\\HI acha\\HI ho\\HI 2-\\UN dusra\\HI agar\\HI kam\\HI na\\HI kare\\HI to\\HI apne\\HI parents\\EN k\\EN bare\\HI m\\HI soch\\HI or\\HI unke\\HI liy\\HI ji\\HI y\\HI sucide\\HI kar\\HI k\\HI jo\\HI tu\\HI unhe\\HI gift\\HI dne\\HI wali\\HI h\\HI unke\\HI chahre\\HI soch\\HI jab\\HI unhe\\HI y\\HI sab\\HI pta\\HI lagega\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "Are mujhe pta h bhulna bhut mushkil hota h kuki y sab mne bh jhela h do tarike h ek asan or ek mushkl 1- phela bhar nikal cos m ya phir koi ghar k pas m ek mast s ladka dekh 15-20 din dekh apne aap bhul jayegi or ho sakta h y wala use kafi acha ho 2- dusra agar kam na kare to apne parents k bare m soch or unke liy ji y sucide kar k jo tu unhe gift dne wali h unke chahre soch jab unhe y sab pta lagega "
+    }, 
+    {
+        "id": 30, 
+        "lang_tagged_text": "Ahoy\\EN ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "Ahoy "
+    }, 
+    {
+        "id": 31, 
+        "lang_tagged_text": "Cabg\\EN bookg\\EN karke\\HI chalenge\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "Cabg bookg karke chalenge "
+    }, 
+    {
+        "id": 32, 
+        "lang_tagged_text": "pratykshik\\HI pariksha\\HI -\\UN mario\\HI me\\HI unlimited\\EN life\\EN kaha\\HI milti\\HI hai\\HI aur\\HI use\\HI kaise\\HI paye\\HI ?\\UN ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "pratykshik pariksha - mario me unlimited life kaha milti hai aur use kaise paye ? "
+    }, 
+    {
+        "id": 35, 
+        "lang_tagged_text": "Vo\\HI to\\HI soogye\\HI h\\HI ??\\UN ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "Vo to soogye h ?? "
+    }, 
+    {
+        "id": 38, 
+        "lang_tagged_text": "Hamare\\HI des\\HI ki\\HI saan\\HI hamare\\HI dil\\HI ki\\HI arman\\HI ham\\HI sab\\HI ki\\HI jaan\\HI hi\\HI hamare\\HI salman\\UN bhai\\HI jaan\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "Hamare des ki saan hamare dil ki arman ham sab ki jaan hi hamare salman bhai jaan"
+    }, 
+    {
+        "id": 40, 
+        "lang_tagged_text": "Sallu\\HI aj\\HI m\\EN bt\\HI kiay\\HI bgair\\HI nh\\HI jany\\HI wala\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "Sallu aj m bt kiay bgair nh jany wala"
+    }, 
+    {
+        "id": 41, 
+        "lang_tagged_text": "us\\EN stocks\\EN down\\EN on\\EN greek\\EN crisis\\EN :\\UN us\\EN shares\\EN were\\EN closed\\EN lower\\EN wednesday\\HI ,\\UN erasing\\EN earlier\\EN gains\\EN ,\\UN after\\EN the\\EN market\\EN w\\EN .\\UN .\\UN .\\UN http\\HI /\\UN URL\\EN ", 
+        "matrix_language": "EN", 
+        "sentiment": 0, 
+        "text": "us stocks down on greek crisis: us shares were closed lower wednesday ,  erasing earlier gains ,  after the market w .  .  .  http/URL"
+    }, 
+    {
+        "id": 42, 
+        "lang_tagged_text": "Bhai\\HI bhuk\\HI lagi\\HI khana\\HI nahi\\HI khane\\HI jara\\HI aap\\HI ka\\HI wait\\HI kar\\HI raha\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "Bhai bhuk lagi khana nahi khane jara aap ka wait kar raha"
+    }, 
+    {
+        "id": 44, 
+        "lang_tagged_text": "Accha\\HI thand\\HI bhayi\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "Accha thand bhayi "
+    }, 
+    {
+        "id": 46, 
+        "lang_tagged_text": "Bhaijan\\HI watsaap\\EN pe\\HI aapke\\HI bare\\HI ma\\HI jo\\HI chal\\HI raha\\HI ha\\HI wo\\HI jhoot\\HI ha\\HI na\\HI .\\UN plz\\EN reply\\EN must\\EN ", 
+        "matrix_language": "MIX", 
+        "sentiment": 0, 
+        "text": "Bhaijan watsaap pe aapke bare ma jo chal raha ha wo jhoot ha na.plz reply must"
+    }, 
+    {
+        "id": 56, 
+        "lang_tagged_text": "ok\\HI mere\\HI saath\\HI phn\\HI pe\\HI baat\\HI e\\HI karenge\\HI ?\\UN ya\\HI whats\\EN app\\EN pe\\HI ?\\UN boliye\\HI jaldi\\HI ...\\UN ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "ok mere saath phn pe baat e karenge?ya whats app pe?boliye jaldi..."
+    }, 
+    {
+        "id": 59, 
+        "lang_tagged_text": "Ek\\HI project\\EN mil\\HI chuka\\HI h\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "Ek project mil chuka h "
+    }, 
+    {
+        "id": 60, 
+        "lang_tagged_text": "abse\\HI aise\\HI post\\HI ko\\HI a\\EN +\\UN category\\EN mein\\HI rakha\\HI jayega\\HI .\\UN .\\UN .\\UN .\\UN .\\UN ;)\\UN =\\UN d\\HI :\\UN p\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "abse aise post ko a+ category mein rakha jayega .  .  .  .  .  ;) =d :p"
+    }, 
+    {
+        "id": 63, 
+        "lang_tagged_text": "modi\\UN ji\\HI ne\\HI ak\\HI 47\\UN kha\\HI tha\\HI ,\\UN ak\\HI 67\\UN nikla\\HI ?\\UN #\\UN delhidecides\\EN #\\UN kiskidilli\\HI #\\UN aapsweep\\EN #\\UN feb10witharnab\\EN ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "modi ji ne ak 47 kha tha, ak 67 nikla? #delhidecides #kiskidilli #aapsweep #feb10witharnab"
+    }, 
+    {
+        "id": 64, 
+        "lang_tagged_text": "bhai\\HI tho\\HI meeting\\HI nahi\\HI cancel\\HI kartha\\HI agar\\HI committment\\EN de\\HI deha\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "bhai tho meeting nahi cancel kartha agar committment de deha"
+    }, 
+    {
+        "id": 67, 
+        "lang_tagged_text": "Wo\\HI kya\\HI chugli\\HI kri\\HI moti\\HI meri\\HI raat\\HI me\\HI ?\\UN ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "Wo kya chugli kri moti meri raat me ? "
+    }, 
+    {
+        "id": 69, 
+        "lang_tagged_text": "\u00c3\u2013\\UN nline\\HI hoya\\HI nahi\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "\u00c3\u2013nline hoya nahi"
+    }, 
+    {
+        "id": 71, 
+        "lang_tagged_text": "or\\HI wo\\HI maan\\HI gy\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "or wo maan gy "
+    }, 
+    {
+        "id": 72, 
+        "lang_tagged_text": "abe\\HI majid\\HI se\\HI chapal\\HI chori\\HI nahi\\HI hoti\\HI jise\\HI jarurt\\HI hoti\\HI he\\HI wo\\HI lekar\\HI jata\\HI he\\HI ", 
+        "matrix_language": "HI", 
+        "sentiment": 0, 
+        "text": "abe majid se chapal chori nahi hoti jise jarurt hoti he wo lekar jata he"
+    }, 
+    {
+        "id": 74, 
+        "lang_tagged_text": "lol\\HI admin\\EN atention\\EN seeker\\EN h\\EN jante\\HI bujhte\\HI post\\EN dala\\HI ki\\HI coment\\EN mile\\HI >_<\\UN ", 
+        "matrix_language": "MI", 
+        "sentiment": 0, 
