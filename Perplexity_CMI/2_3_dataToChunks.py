@@ -28,4 +28,29 @@ def divideDataIntoChunks():
 		print cnt
 		print CMI_values[cnt][:-1]
 		cmi = float(CMI_values[cnt][:-1])
-		if cmi>=0 and cmi<=
+		if cmi>=0 and cmi<=10:
+			f1.write(line)
+		elif cmi>10 and cmi<=20:
+			f2.write(line)
+		elif cmi>20 and cmi<=30:
+			f3.write(line)
+		elif cmi>30 and cmi<=40:
+			f4.write(line)
+		elif cmi>40 and cmi<=50:
+			f5.write(line)
+		elif cmi>50 and cmi<=60:
+			f6.write(line)
+		elif cmi>60 and cmi<=70:
+			f7.write(line)
+		elif cmi>70 and cmi<=80:
+			f8.write(line)
+		elif cmi>80 and cmi<=90:
+			f9.write(line)
+		elif cmi>90 and cmi<=100:
+			f10.write(line)
+		cnt+=1
+
+filename = "3_CMI_values.txt"
+# filename = "x.txt"
+getCMIValues(filename)
+divideDataIntoChunks()
