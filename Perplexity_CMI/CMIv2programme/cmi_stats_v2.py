@@ -93,4 +93,87 @@ import cmi_corpus_reader as creader
 #                  (See the definitions of the predefined               #
 #                   tagsets at the beginning of the file.)              #
 #                                                                       #
-##############################
+#########################################################################
+
+
+#########################################################################
+# Calculate the number of words tagged by each language tag, including
+# defining which language any mixed words belong to, for each tagset.
+#
+# Return the number of words tagged as belonging to any language
+# and the number of non-language words in the utterance, as well as
+# the number of words belonging to the utterance's matrix language
+# (dominating language) and that matrix language itself.
+#
+def maptags(tags, tagset, prevmatrix):
+
+    if tagset == tagsets.dastags:
+        eng = tags[0] + tags[1] + tags[2]   # EN + EN+{HI|BN}_SUFFIX
+        bng = tags[3] + tags[4]             # BN + BN+EN_SUFFIX
+        hnd = tags[5] + tags[6]             # HN + HN+EN_SUFFIX
+        #ne = tags[7]  + tags[10]
+        #acro = tags[11] + tags[13] + tags[14]
+        ## While this option is based on the suffixes of NEs and ACROs
+        eng += tags[8] + tags[12]           # eng above + {NE|ACRO}+EN_SUFFIX
+        bng += tags[9] + tags[13]           # bng above + {NE|ACRO}+BN_SUFFIX
+        hnd += tags[10] + tags[14]          # hnd above + {NE|ACRO}+HI_SUFFIX
+        ne = tags[7]
+        acro = tags[11]
+
+        other = tags[15] + tags[16]
+        nonlang = ne + acro + other
+        lang = eng + bng + hnd
+        #domlang = max(eng,bng,hnd)       
+        lang1 = eng
+        lang2 = max(bng,hnd)
+
+    elif tagset == tagsets.nitatags:
+        eng = tags[0]
+        bng = tags[1]
+        hnd = tags[2]
+        mix = tags[3]
+        nonlang = tags[4] + tags[5] + tags[6] + tags[7]
+        lang = eng + bng + hnd + mix
+        lang1 = eng
+        lang2 = max(bng,hnd)
+
+    elif tagset == tagsets.ndtags:
+        lang1 = tags[0] # ned
+        lang2 = tags[1] # tur
+        nonlang = tags[2]
+        lang = lang1 + lang2
+
+    elif tagset == tagsets.vyastags:
+        lang1 = tags[0]
+        lang2 = tags[1]
+        error = tags[2] + tags[3]
+        nonlang = 0
+        lang = lang1 + lang2 + error
+
+    elif tagset == tagsets.firetags:
+        eng = tags[0] + tags[1] + tags[2]
+        bng = tags[3] + tags[4]
+        hnd = tags[5] + tags[6]
+        gur = tags[7] 
+        kan = tags[8]
+        mix = tags[9]
+        nonlang = tags[10]
+        lang = eng + bng + hnd + gur + kan + mix
+        #domlang = max(eng,bng,hnd,gur,kan)
+        lang1 = eng
+        lang2 = max(bng,hnd,gur,kan)
+
+    elif tagset == tagsets.csws14tags:
+        lang1 = tags[0]
+        lang2 = tags[1]
+        mix = tags[2] + tags[3]
+        nonlang = tags[4] + tags[5]
+        lang = lang1 + lang2 + mix
+
+    elif tagset == tagsets.csws16tags:
+        lang1 = tags[0]
+        lang2 = tags[1]
+        fw = tags[2]
+        mix = tags[3] + tags[4]
+        nonlang = tags[5] + tags[6] + tags[6]
+        lang = lang1 + lang2 + fw + mi
