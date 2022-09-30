@@ -35,4 +35,62 @@
 #    given in the file cmi_corpus_reader.py.
 #
 # 4. Add the corpus file name and its language ID to codemix/1 in cmi_corpus_reader.py.
-#   (The corpora file names are currently hardcoded in that functio
+#   (The corpora file names are currently hardcoded in that function. Sorry for that!)
+#
+# 5. Calculate the code-mixing of the entire corpus using cmi_stats/2.
+#    A typical usage is:
+#
+#       >>> cmi_stats('ned', tagsets.ndtags)
+#
+#    where 'ned' says that the Dutch corpus should be the one processed and
+#    tagsets.ndtags that it's annotated with the tagset of Nguyen & Dogruöz.
+# 
+#    Another example:
+#
+#       >>> cmi_stats('cswsest', tagsets.csws16tags)
+#
+#    where 'cswsest' is the 2016 EMNLP code-switching workshop English-Spanish
+#    training corpus and tagsets.csws16tags that year's version of the tagset.
+#
+#    The system output statistics come in seven groups, as follows:
+#       1. Cc = the overall CMI value for the entire corpus.
+#       2. The total number of utterances and the number of code-mixed utterances.
+#       3. The fraction (%) of mixed and non-mixed utterances, respectively.
+#       4. The average code-mixing per utterance (Cu) in the mixed utterances
+#           and overall in the corpus.
+#       5. The number of utterance-internal code-switching points overall;
+#           average number of switches inside the mixed utterances and
+#           average for all utterances; the number of switches between utterances
+#           and the fraction of switches between utterances.
+#       6. The fraction of mixed utterances in different Cu intervals together with
+#           the average number of switch points in each of those intervals.
+#       7. The number and fraction of words annotated with each tag in the tagset.
+#
+###################################################################################
+
+###################################################################################
+#
+# The Code-Mixing Index is further described in the following two papers:
+#
+# [CMI v2] Gambäck, B. and Das, A.: Comparing the level of code-switching in corpora.
+# Proc. of the 10th International Conference on Language Resources and Evaluation (LREC).
+# Portoroz, Slovenia (May 2016), pp 1850–1855.
+#
+# [CMI v1] Gambäck, B. and Das, A.: On measuring the complexity of code-mixing.
+# Proc. of the 1st Workshop on Language Technologies for Indian Social Media (Social-India).
+# Goa, India (Dec 2014), pp. 1-7.
+#
+###################################################################################
+
+import cmi_tagsets as tagsets
+import cmi_corpus_reader as creader
+
+
+#########################################################################
+#                                                                       #
+#                       MAPPING OF LANGUAGE TAGS                        #
+#                      FOR THE PREDEFINED TAGSETS                       #
+#                  (See the definitions of the predefined               #
+#                   tagsets at the beginning of the file.)              #
+#                                                                       #
+##############################
