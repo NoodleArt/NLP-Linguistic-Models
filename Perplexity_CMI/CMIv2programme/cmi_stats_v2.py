@@ -389,4 +389,75 @@ def cmi_stats(lang, tagset):
     print("Num of utterances:    {:6d}".format(num))
     print("Num of mixed:         {:6d}".format(mix))
     #print("Num of tokens:        {:6d}".format(len(corpus.words())))
-    #print("Num of unique tokens: {:6d}".format(
+    #print("Num of unique tokens: {:6d}".format(len(set(corpus.words()))))
+    print()
+    print("Fraction non-mixed:   {:6.2f}".format(100 * nonmix / num))
+    print("Fraction mixed:       {:6.2f}".format(100 * mix / num))
+    print()
+    if mix > 0:
+        print("Average Cu mixed:     {:6.2f}".format(100 * cmitot / mix))
+    print("Average Cu total:     {:6.2f}".format(100 * cmitot / num))
+    print()
+    print("Num of switches:      {:6d}".format(Ptot))
+    if mix > 0:
+        print("Average P mixed:      {:6.2f}".format(Ptot / mix))
+    print("Average P total:      {:6.2f}".format(Ptot / num))
+    print("Num of interswitches: {:6d}".format(inter))
+    print("Fraction interswitch: {:6.2f}".format(100 * inter / num))
+    print()
+
+    # Print statistics for different CMI intervals
+    print("Fraction 0 < C <= 10: {:6.2f}".format(100 * cmi10 / num))
+    if cmi10 > 0:
+        print("Avg P for C = (0,10]: {:6.2f}".format(P10 / cmi10))
+    print("Fraction 10 < C <= 20:{:6.2f}".format(100 * cmi20 / num))
+    if cmi20 > 0:
+        print("Avg P for C = (10,20]:{:6.2f}".format(P20 / cmi20))
+    print("Fraction 20 < C <= 30:{:6.2f}".format(100 * cmi30 / num))
+    if cmi30 > 0:
+        print("Avg P for C = (20,30]:{:6.2f}".format(P30 / cmi30))
+    print("Fraction 30 < C <= 40:{:6.2f}".format(100 * cmi40 / num))
+    if cmi40 > 0:
+        print("Avg P for C = (30,40]:{:6.2f}".format(P40 / cmi40))
+    print("Fraction C > 40:      {:6.2f}".format(100 * cmiinf / num))
+    if cmiinf > 0:
+        print("Avg P for C > 40:     {:6.2f}".format(Pinf / cmiinf))
+    print()    
+
+    # Print the number of words annotated with each tag 
+    print("\n******** Tags ***********  %  *****")
+    w = 0
+    for x in range(len(tagset)):
+        w += tagstot[x]
+    for x in range(len(tagset)):
+        print(tagset[x].ljust(15), repr(tagstot[x]).rjust(6), " {:6.2f}".format(100*tagstot[x]/w))
+    print("Total:", repr(w).rjust(15))
+    print("\n***********************************\n\n")
+
+
+#########################################################################
+#                                                                       #
+#                              HELP ROUTINES                            #
+#                                                                       #
+#########################################################################
+
+#########################################################################
+# Help routines for debugging and printing
+#
+def count_tag(tag, utterances, corpus):
+    dict = {}
+    for i in range(utterances):
+        for w,t in corpus.tagged_sents()[i]:
+            if t == tag:
+                if w in dict:
+                    dict[w] += 1
+                else:
+                    dict[w] = 1
+    return dict
+
+### typical usage
+# >>> print_dict(count_tag('UNIV', 100, codemix('bng')))
+#
+def print_dict(dict):
+    for i in range(1,100):
+      
