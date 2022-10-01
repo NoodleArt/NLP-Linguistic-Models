@@ -243,4 +243,70 @@ def switchpoint(tag, tagset, P, currlang):
 # (i.e., the most frequent language in the utterance x); and
 # P(x) the number of switching points inside the utterance x.
 #
-# The second clause defines C
+# The second clause defines Cu(x) to be 0 for utterances containing
+# no words that belong to any of the languages in the corpus (N=0).
+# Cu is also 0 for monolingual utterances (since then max{t}=N and P=0).
+# 
+def cmi_one_utterance(utterance, tagset, prevmatrix):
+    P = 0
+    currlang = 0
+    tags = [0 for x in range(len(tagset))]
+    for i in range(len(utterance)):
+        word,tag = utterance[i]
+        if word:
+            # special cases for words that contain unwanted symbols
+            if word[0] == '[':
+                if word == '[object' or word == '[img':
+                    # for Nguyen & Dogruöz' NED-TUR corpus, where html
+                    # links sometimes are prefixed by '[object' or '[img'.
+                    # those superfluous prefixes are thus removed here.
+                    continue
+                else:
+                    # for the FIRE corpora, where NEs sometimes are
+                    # included in brackets, that must be removed.
+                    tags[len(tagset)-1] += 1
+                    continue
+        if tag == '' or tag is None:
+            print("No tag for word", word)
+        elif tag in tagset:
+            tags[tagset.index(tag)] += 1
+            P, currlang = switchpoint(tag, tagset, P, currlang)
+        else:
+            # for Das & Gambäck's ENG-BNG corpus, where suffix tags can
+            # be prefixed by 'wlcm:'; that prefix needs to be stripped.
+            tail = tag.partition(':')[2]
+            if tail in tagset:
+                tags[tagset.index(tail)] += 1
+            else:
+                print("Unknown tag", tag, "for word", word, "adding to UNDEF")
+                tags[len(tagset)-1] += 1
+
+    lang, nonlang, nummatrix, matrixlang = maptags(tags, tagset, prevmatrix)
+
+    # add an inter-utterance switch point if the matrix languages differ
+    if matrixlang == prevmatrix or prevmatrix == 0:
+        delta = 0
+    else:
+        delta = 1
+    
+    if lang == 0:
+        return 0, P, delta, tags, prevmatrix
+    else:
+        return 1 - (nummatrix - P)/lang, P, delta, tags, matrixlang
+
+#########################################################################
+#                                                                       #
+#                              MAIN ROUTINE                             #
+#                      Cc = CODE-MIXING FOR A CORPUS                    #
+#                                                                       #
+#########################################################################
+
+#########################################################################
+# Calculate code-mixed index and tag usage for an entire corpus
+#
+# The relevant formula used to calculate Cc of an utterance x is:
+#
+#   Cc(x) = 100/U * [ 1/2 * Sum{1 - [max{t}(x)-P(x)]/N(x) + delta(x)} + [5/6]*S ]
+#
+# where U is the total number of utterances in the corpus
+# and S the number of utterances that con
