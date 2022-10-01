@@ -309,4 +309,84 @@ def cmi_one_utterance(utterance, tagset, prevmatrix):
 #   Cc(x) = 100/U * [ 1/2 * Sum{1 - [max{t}(x)-P(x)]/N(x) + delta(x)} + [5/6]*S ]
 #
 # where U is the total number of utterances in the corpus
-# and S the number of utterances that con
+# and S the number of utterances that contain any switching.
+#
+# The Sum is over all the utterances in the corpus (so x = 1 to U);
+# max{t}(x) is the number of tokens in each utterance x belonging to
+# its matrix language (i.e., the most frequent language in the utterance);
+# P(x) is the number of switching points inside each utterance x;
+# N(x) is the number of tokens that belong to any of the languages in
+# the utterance (i.e., all the tokens except for language independent ones);
+# delta(x) is 1 if a switching point precedes the utterance and 0 otherwise.
+#
+# The 5/6 weighting of S (the number of utterances containing switching)
+# comes from the "Reading Ease" readability score [Flesch 1948] which,
+# based on psycho-linguistic experiments, similarly weights the frequency
+# of words per sentence as 1.2 times the number of syllables per word.
+# 
+def cmi_stats(lang, tagset):
+
+    # initialisation
+    nonmix = 0
+    mix = 0
+    cmitot = 0
+    Ptot = 0
+    cmi10 = cmi20 = cmi30 = cmi40 = cmiinf = 0
+    P10 = P20 = P30 = P40 = Pinf = 0
+    inter = 0
+    matrixlang = 0
+    tagstot = [0 for x in range(len(tagset))]
+
+    corpus = creader.corpus_reader(lang)
+    utterances = corpus.tagged_sents()
+    num = len(utterances)
+    if num == 0:
+        print("Empty corpus")
+        return
+
+    # Calculate Cu, the CMI value for each utterance, as well as the
+    # switch-points, P (intra-utterance) and delta (inter-utterance)
+    for i in range(num):
+        cmi, P, delta, tags, matrixlang = cmi_one_utterance(utterances[i], tagset, matrixlang)
+        inter += delta
+        for x in range(len(tagset)):
+            tagstot[x] += tags[x]
+        if cmi == 0:
+            nonmix += 1
+        else:
+            mix += 1
+            cmitot += cmi + delta
+            Ptot += P
+
+            # to produce statistics for different CMI intervals
+            cmi *= 50
+            if cmi <= 10:
+                cmi10 += 1
+                P10 += P
+            elif cmi <= 20:
+                cmi20 += 1
+                P20 += P
+            elif cmi <= 30:
+                cmi30 += 1
+                P30 += P
+            elif cmi <= 40:
+                cmi40 += 1
+                P40 += P
+            else:
+                cmiinf += 1
+                Pinf += P
+
+    # Calculate Cc, the mixing of the entire corpus
+    cmitot = cmitot/2
+    Cc = (cmitot + 5*mix/6) / num
+    
+    # Print CMI values and overall corpus statistics
+    print("\n***********************************")
+    print("Language / corpus:", lang)
+    print()
+    print("Cc:                   {:6.2f}".format(100 * Cc))
+    print()
+    print("Num of utterances:    {:6d}".format(num))
+    print("Num of mixed:         {:6d}".format(mix))
+    #print("Num of tokens:        {:6d}".format(len(corpus.words())))
+    #print("Num of unique tokens: {:6d}".format(
