@@ -176,4 +176,71 @@ def maptags(tags, tagset, prevmatrix):
         fw = tags[2]
         mix = tags[3] + tags[4]
         nonlang = tags[5] + tags[6] + tags[6]
-        lang = lang1 + lang2 + fw + mi
+        lang = lang1 + lang2 + fw + mix
+        
+    else:
+        print("Unknown tagset")
+
+    # This isn't strictly correct for corpora mixing more than two languages,
+    # since no inter-utterance switchpoint will be added in case the matrix
+    # language of two utterances switches between two non-English languages.
+    # (Since lang1 is here assumed always to be the number of English words,
+    # while lang2 gives the most frequent other language of the utterance.)
+    # Needs fixing! - BG 160322 
+    if lang1 > lang2:
+        matrixlang = 'lang1'
+        nummatrix = lang1
+    elif lang2 > lang1:
+        matrixlang = 'lang2'
+        nummatrix = lang2
+    else:
+        matrixlang = prevmatrix
+        nummatrix = lang1
+
+    return lang, nonlang, nummatrix, matrixlang
+
+#########################################################################
+#                                                                       #
+#                      Cu = CODE-MIXING PER UTTERANCE                   #
+#                                                                       #
+#########################################################################
+
+#########################################################################
+# Check if the switchpoint counter P should be increased.
+#
+# Increase P if the current word's tag is one of the language tags _and_
+# the most recent preceeding language-tagged word had another language tag
+# (which is given by the value of the currlang argument).
+#
+def switchpoint(tag, tagset, P, currlang):
+    langs = tagsets.langtags(tagset)
+    if currlang == 0 and (tag in langs):
+        # first language tagged word: change currlang, but not P
+        return P, tag
+    elif tag != currlang and (tag in langs):
+        # increase P and change currlang
+        return P+1, tag
+    else:
+        # no change of P and currlang
+        return P, currlang
+    
+#########################################################################
+# Calculate Cu, the code-mixed index for one utterance.
+#
+# Insert an intra-utterance switch point, P, for each language change
+# inside the utterance, as returned from the switchpoint/4 function. 
+# Add an inter-utterance switch, delta, if the utterance's matrix language
+# differs from prevmatrix, the matrix language of the previous utterance.
+#
+# The relevant formula used to calculate Cu for an utterance x is:
+#
+#   Cu(x) = 100 * [N(x)- max{t}(x) + P(x)] / 2*N(x)   : N(x) > 0
+#   Cu(x) = 0   : N(x) = 0
+#
+# where N(x) is the number of tokens that belong to any of the languages in
+# the utterance x (i.e., all the tokens except for language independent ones);
+# max{t}(x) is the number of tokens in x belonging to the matrix language
+# (i.e., the most frequent language in the utterance x); and
+# P(x) the number of switching points inside the utterance x.
+#
+# The second clause defines C
