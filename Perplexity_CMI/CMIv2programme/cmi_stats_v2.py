@@ -460,4 +460,8 @@ def count_tag(tag, utterances, corpus):
 #
 def print_dict(dict):
     for i in range(1,100):
-      
+        print("***** {:3d} *****".format(i))
+        for a,b in dict.items():
+            if b == i:
+                print(a)
+
